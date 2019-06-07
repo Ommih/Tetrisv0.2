@@ -1,0 +1,46 @@
+extends layout
+
+block script
+  script(src="javascripts/tetris.js")
+  script(src="javascripts/tetris2.js")
+  script(src="javascripts/menu.js")
+  script(src="https://cdn.jsdelivr.net/npm/sweetalert2@8")
+
+block content
+  h1 Hardcore Tetris
+  
+  #menu
+    button#singlePlayer Single Player
+    br
+    button#localMultiplayer Local Multiplayer
+    br
+    button#onlineMultiplayer Online Multiplayer
+    br
+  .flex-container.hidden#stats
+
+  .flex-container#game.hidden
+    .boardContainer.hidden#playerOne
+      h3 Player 1
+      p Score: 
+        span#scoreOne
+      p Leve:
+        span#levelOne
+      canvas#tetrisOne(width="240" height="400")
+      div
+        p W - Rotate
+        p A - Left
+        p S - Down
+        p D - Right
+    
+    .boardContainer.hidden#playerTwo
+      h3 Player 2
+      p Score: 
+        span#scoreTwo
+      p Leve:
+        span#levelTwo
+      canvas#tetrisTwo(width="240" height="400")
+      div
+        p Numpad 8 - Rotate
+        p Numpad 4 - Left
+        p Numpad 5 - Down
+        p Numpad 6 - Right

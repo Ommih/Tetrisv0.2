@@ -1,0 +1,45 @@
+a {
+  color: #00B7FF;
+}
+
+body {
+  background: #FFF;
+  color: #000;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+canvas {
+  border: solid .2em #000;
+  background: #fff;
+  height: 65vh;
+}
+.boardContainer {
+  margin: 50px;
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}
+
+#menu {
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  background-color: #fff;
+  margin: 0px auto 30px auto;
+  width: 200px;
+  height: 30px;
+  font-size: 18px;
+}
+
+button:hover {
+  background-color: #45abf9;
+}
