@@ -14,32 +14,36 @@ block content
     br
     button#localMultiplayer Local Multiplayer
     br
-    button#onlineMultiplayer Online Multiplayer
+    button#onlineMultiplayer.hidden Online Multiplayer
     br
   .flex-container.hidden#stats
 
   .flex-container#game.hidden
     .boardContainer.hidden#playerOne
-      h3 Player 1
-      p Score: 
-        span#scoreOne
-      p Leve:
-        span#levelOne
-      canvas#tetrisOne(width="240" height="400")
-      div
+      h2.flex-max Player 1
+      .flex-start-container
+        .stats
+          h3 Score: 
+            span#scoreOne
+          h3 Leve:
+            span#levelOne
+        canvas#tetrisOne(width="240" height="400")
+      .info.flex-max
         p W - Rotate
         p A - Left
         p S - Down
         p D - Right
     
     .boardContainer.hidden#playerTwo
-      h3 Player 2
-      p Score: 
-        span#scoreTwo
-      p Leve:
-        span#levelTwo
-      canvas#tetrisTwo(width="240" height="400")
-      div
+      h2.flex-max Player 2
+      .flex-start-container
+        .stats
+          h3 Score: 
+            span#scoreTwo
+          h3 Leve:
+            span#levelTwo
+        canvas#tetrisTwo(width="240" height="400")
+      .info.flex-max
         p Numpad 8 - Rotate
         p Numpad 4 - Left
         p Numpad 5 - Down
