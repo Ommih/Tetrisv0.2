@@ -127,6 +127,13 @@ function merge2(arena, player2){
     });
 }
 
+function playerMove2(dir) {
+    player2.pos.x += dir;
+    if(collide(player2.arena, player2)) {
+        player1.pos.x -= dir;
+    }
+}
+
 var player2 = new Player();
 
 document.addEventListener('keydown', event => {
