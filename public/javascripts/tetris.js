@@ -14,7 +14,6 @@ class Player {
     }
 
     rowCleared(rowCount) {
-        console.log(rowCount);
 
         if (rowCount == 1) this.score += 40 * this.level;
         else if (rowCount == 2) this.score += 100 * this.level;

@@ -24,8 +24,12 @@ function endGame(id) {
 
     var title = `GAME OVER\n`
 
-    if (window.sessionStorage.getItem('gameType') == 'single') title += `YOU LOST`;
+    if (window.sessionStorage.getItem('gameType') == 'single') {
+        togglePlayer()
+        title += `YOU LOST`;
+    }
     else {
+        togglePlayer(1);
         title = (player.score == player2.score) ? title += `Draw` : player.score > player2.score ? `GAME OVER<br>Player 1 Lost` : `GAME OVER<br>Player 2`
     }
 
@@ -37,45 +41,44 @@ function endGame(id) {
         confirmButtonText: 'OK'
     });
 
-    $('#playerOne').addClass('hidden');
-    $('#playerTow').addClass('hidden');
     toggleGame();
 }
 
 function togglePlayer(id = 0) {
-    togglePlayerOne();
-    if (id != 0) togglePlayerTwo();
+    $(document).trigger('togglePlayer', 1);
+    if (id != 0) $(document).trigger('togglePlayer', 2);
 }
 
-function togglePlayerOne() {
-    let player = $('#playerOne');
-    
-    if (player.hasClass('hidden')) {
-        player.removeClass('hidden');
-        
-        console.log("start");
+$(document).on('togglePlayer', (event, playerNr) => {
+    switch(playerNr) {
+        case 1:
+            let playerWindow = $('#playerOne');
 
-        playerReset();
-        updateScore();
-        update();
-    } else {
-        player.addClass('hidden');
+            if (playerWindow.hasClass('hidden')) {
+                playerWindow.removeClass('hidden');   
+
+                playerReset();
+                updateScore();
+                update();
+            } else {
+                playerWindow.addClass('hidden');
+            }
+            break;
+        case 2:
+            let playerWindow2 = $('#playerTwo');
+
+            if (playerWindow2.hasClass('hidden')) {
+                playerWindow2.removeClass('hidden');
+                
+                playerReset2();
+                updateScore2();
+                update2();
+            } else {
+                playerWindow2.addClass('hidden');
+            }
+            break
     }
-}
-
-function togglePlayerTwo() {
-    let player = $('#playerTwo');
-
-    if (player.hasClass('hidden')) {
-        player.removeClass('hidden');
-        
-        playerReset2();
-        updateScore2();
-        update2();
-    } else {
-        player.addClass('hidden');
-    }
-}
+});
 
 function toggleGame() {
     let menu = $('#menu');
@@ -86,7 +89,6 @@ function toggleGame() {
         game.addClass('hidden');
         
     } else {
-        
         window.sessionStorage.setItem('gameOver', "false");
         
         player = new Player();
